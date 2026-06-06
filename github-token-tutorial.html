@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Classic Token 生成教程</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 800px;
+    width: 100%;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #58a6ff;
+  }
+  .subtitle {
+    font-size: 16px;
+    color: #8b949e;
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+  .step {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 32px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .step:hover { border-color: #58a6ff; }
+  .step-number {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: #1f6feb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #f0f6fc;
+  }
+  .step-desc {
+    font-size: 15px;
+    color: #c9d1d9;
+    line-height: 1.7;
+  }
+  .step-desc code {
+    background: #21262d;
+    color: #58a6ff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .highlight-box {
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-left: 4px solid #d29922;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #d29922;
+    line-height: 1.6;
+  }
+  .highlight-box strong { color: #f0f6fc; }
+  .token-box {
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .token-box .warning-icon { font-size: 40px; margin-bottom: 8px; }
+  .token-box .warning-text {
+    color: #f85149;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .token-box .warning-desc {
+    color: #8b949e;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .img-placeholder {
+    background: linear-gradient(135deg, #1f6feb22, #1f6feb11);
+    border: 2px dashed #30363d;
+    border-radius: 8px;
+    padding: 40px;
+    margin-top: 12px;
+    text-align: center;
+    color: #8b949e;
+  }
+  .img-placeholder .icon { font-size: 36px; display: block; margin-bottom: 8px; }
+  .img-placeholder .label { font-size: 14px; }
+  @media (max-width: 600px) {
+    body { padding: 20px 12px; }
+    h1 { font-size: 22px; }
+    .step { flex-direction: column; gap: 12px; padding: 18px; }
+    .step-number { width: 36px; height: 36px; font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔑 GitHub Classic Token 生成教程</h1>
+  <p class="subtitle">按照以下步骤生成一个有 <code>repo</code> 权限的 Personal Access Token (Classic)</p>
+
+  <div class="step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <div class="step-title">登录 GitHub，进入 Token 设置页</div>
+      <div class="step-desc">
+        打开浏览器，访问 <a href="https://github.com/settings/tokens" style="color:#58a6ff;" target="_blank">github.com/settings/tokens</a><br>
+        确保你已经登录了 GitHub 账号。
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <div class="step-title">点击生成按钮</div>
+      <div class="step-desc">
+        在 Token 设置页面，点击 <strong>Generate new token</strong> 按钮，<br>
+        然后从下拉菜单中选择 <strong>Generate new token (classic)</strong>。
+      </div>
+      <div class="img-placeholder">
+        <span class="icon">🔄</span>
+        <span class="label">[ 示意图 ] — 点击 "Generate new token" → "Generate new token (classic)"</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">3</div>
+    <div class="step-content">
+      <div class="step-title">填写 Token 信息</div>
+      <div class="step-desc">
+        <strong>Note</strong>：给 Token 起个名字，比如 <code>codex-kingdee</code><br>
+        <strong>Expiration</strong>：建议选 <code>No expiration</code>，免得过期后忘了续<br>
+        <strong>Select scopes</strong>：勾选 <code>repo</code>
+      </div>
+      <div class="highlight-box">
+        <strong>💡 必选权限：</strong><br>
+        ✅ <code>repo</code> — 完全控制私有仓库（包含 public_repo）<br>
+        其他权限按需勾选，创建仓库只需要 <code>repo</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <div class="step-title">勾选 repo 范围</div>
+      <div class="step-desc">
+        在 Scopes 区域，找到 <strong>repo</strong> 并勾选它。<br>
+        勾选后会自动选中下属所有子权限。
+      </div>
+      <div class="img-placeholder">
+        <span class="icon">✅</span>
+        <span class="label">[ 示意图 ] — Scopes 列表中找到 repo，勾选</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">5</div>
+    <div class="step-content">
+      <div class="step-title">生成并复制 Token</div>
+      <div class="step-desc">
+        拉到页面底部，点击 <strong>Generate token</strong> 按钮。<br>
+        生成后你会看到一个绿色的长字符串——<strong style="color:#f85149;">立即复制它！</strong><br>
+        这个 Token 只显示一次，关闭页面后就再也看不到了。
+      </div>
+      <div class="token-box">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-text">务必保存好 Token</div>
+        <div class="warning-desc">
+          复制后粘贴到安全的地方（比如密码管理器）<br>
+          然后发给我，我帮你创建仓库
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="border-left-color: #3fb950; margin-top: 0;">
+    <strong>✅ 完成后：</strong><br>
+    把生成的 Token 复制回来发给我，我立刻帮你创建 <code>aiwei-machinery-implement</code> 仓库！
+  </div>
+</div>
+</body>
+</html>
